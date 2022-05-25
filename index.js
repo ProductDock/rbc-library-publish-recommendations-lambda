@@ -5,9 +5,9 @@ const produce = require("./kafka/producer");
 exports.insertRecommendations = async (req, res) => {
   try {
 
-    var bookIds = [1,2,3,4,5,6,7,8,9,10,11,12];
+    var bookIds = [68,16,14,69,46,57,59,54,4,13,38,52];
     
-    bookIds.forEach(bookId => produce(JSON.stringify(bookId, null, 2)));
+    bookIds.forEach(bookId => produce(JSON.stringify({bookId}, null, 2)));
 
     res.status(200);
     res.send("Data published successfully");
