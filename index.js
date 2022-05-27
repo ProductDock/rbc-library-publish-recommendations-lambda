@@ -6,8 +6,14 @@ exports.insertRecommendations = async (req, res) => {
   try {
 
     var bookIds = [68,16,14,69,46,57,59,54,4,13,38,52];
-    
-    bookIds.forEach(bookId => produce(JSON.stringify({bookId}, null, 2)));
+
+    bookIds.forEach(bookId => {
+      const message = {
+        bookId: bookId,
+        recommendation: true
+      }
+      produce(JSON.stringify(message, null, 2));
+    });
 
     res.status(200);
     res.send("Data published successfully");
