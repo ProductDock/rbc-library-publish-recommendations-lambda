@@ -4,14 +4,13 @@ const produce = require("./kafka/producer");
 
 exports.insertRecommendations = async (req, res) => {
   try {
+    var bookIds = [68, 16, 14, 69, 46, 57, 59, 54, 4, 13, 38, 52];
 
-    var bookIds = [68,16,14,69,46,57,59,54,4,13,38,52];
-
-    bookIds.forEach(bookId => {
+    bookIds.forEach((bookId) => {
       const message = {
         bookId: bookId,
-        recommendation: true
-      }
+        recommended: true,
+      };
       produce(JSON.stringify(message, null, 2));
     });
 
